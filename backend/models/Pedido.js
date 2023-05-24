@@ -1,7 +1,7 @@
 const {mongoose, Schema, model} = require('mongoose');
 
 const PedidoSchema = Schema({
-    ped_id: {
+    id: {
         type: Number,
         //require: true,
         unique: true
@@ -9,6 +9,13 @@ const PedidoSchema = Schema({
     fecha: {
         type: String,
         //require: true
+    }
+},{
+    toJSON: {
+        virtuals: true
+    },
+    toObject: {
+        virtuals: true
     }
 });
 
