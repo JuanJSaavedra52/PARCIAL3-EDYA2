@@ -1,4 +1,5 @@
 const express = require('express')
+const {validationResult} = require('express-validator');
 const Pedido = require('../models/Pedido')
 const Coordenada = require('../models/Coordenada')
 
@@ -9,16 +10,16 @@ const solicitarPedido = async (req, res = express.request) => {
         const pedido = new Pedido(req.body);
         await pedido.save();
 
-        res.statusCode(200).json({
+        res.status(200).json({
             ok: true,
-            pedido
+            pedido,
         })
 
     } catch(error) {
         console.log(error)
-        res.statusCode(500).json({
+        res.status(500).json({
             ok: false,
-            error
+            error,
         })
     }
 }
@@ -30,14 +31,14 @@ const solicitarCoordenadas = async (req, res = express.request) => {
         const coordenada = new Coordenada(req.body);
         await coordenada.save();
 
-        res.statusCode(200).json({
+        res.status(200).json({
             ok: true,
             coordenada
         })
 
     } catch(error) {
         console.log(error)
-        res.statusCode(500).json({
+        res.status(500).json({
             ok: false,
             error
         })
